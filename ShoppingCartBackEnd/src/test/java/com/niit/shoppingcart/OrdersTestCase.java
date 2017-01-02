@@ -6,8 +6,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.niit.shoppingcart.dao.OrdersDAO;
-import com.niit.shoppingcart.model.Orders;
+import com.niit.shoppingcart.dao.OrderDAO;
+import com.niit.shoppingcart.model.Order;
 
 public class OrdersTestCase {
 
@@ -17,10 +17,10 @@ public class OrdersTestCase {
 	
 	
 	@Autowired
-	 static Orders orders;
+	 static Order order;
 	
     @Autowired
-	 static OrdersDAO ordersDAO;
+	 static OrderDAO orderDAO;
     
     @BeforeClass
     public static  void init()
@@ -30,68 +30,68 @@ public class OrdersTestCase {
     	context.scan("com.niit.shoppingcart");
     	context.refresh();
     	
-    ordersDAO=  (OrdersDAO) context.getBean("ordersDAO");
+    orderDAO=  (OrderDAO) context.getBean("orderDAO");
     
-    orders= (Orders) context.getBean("orders");
+    order= (Order) context.getBean("order");
     
-    System.out.println(" the orderss are created");
+    System.out.println(" the orders are created");
     
     }
     
-    //@Test
+    @Test
     public void  createCartTestCase()
    {
    	
-   	orders.setOrdersID("ORD-01");
-   	orders.setCart("CAR-01");
-   	orders.setPaymentMethod("Cash on Delivery");
-   	orders.setBillingAddress("India");
+   	order.setOrderID("ORD-01");
+   	order.setUserID("Dhaval123");
+   	order.setPaymentMethod("Cash on Delivery");
    	
    	
    	
-   	boolean status= ordersDAO.save(orders);
    	
-   	Assert.assertEquals("Create cart test case", true, status);
+   	 orderDAO.saveOrUpdate(order);
+   	
+   	Assert.assertEquals(order, ("Create order test case"));
    	
    	 }
     /*@Test
-	public   void deleteOrdersTestCase()
+	public   void deleteOrderTestCase()
 	{
-		orders.setId("GYM-06");
-		boolean status= ordersDAO.delete(orders);
-		Assert.assertEquals("Delete Orders Test Case", true, status);
+		order.setId("GYM-06");
+		boolean status= orderDAO.delete(order);
+		Assert.assertEquals("Delete Order Test Case", true, status);
 	}*/
 
 	
 
 	/*@Test
-	public   void updateOrdersTestCase()
+	public   void updateOrderTestCase()
 	{
 		
 		
-		    orders.setId("GYM-01");
-			orders.setDescription("This is used to strengthen the Upperbody Muscles");
+		    order.setId("GYM-01");
+			order.setDescription("This is used to strengthen the Upperbody Muscles");
 			
 		
 		
-		boolean status= ordersDAO.update(orders);
+		boolean status= orderDAO.update(order);
 		
-		Assert.assertEquals("Update Orders Test Case", true, status);
+		Assert.assertEquals("Update Order Test Case", true, status);
 		
 	
 	}*/
 	
 	/*@Test
-	public   void getOrdersTestCase()
+	public   void getOrderTestCase()
 	{
-		Assert.assertEquals("Get Orders Test Case", null, ordersDAO.get("abcd"));
+		Assert.assertEquals("Get Order Test Case", null, orderDAO.get("abcd"));
 	}
 	
 	
 	@Test
-	public   void getAllOrdersTestCase()
+	public   void getAllOrderTestCase()
 	{
-		Assert.assertEquals("Get All Orders Test Case", 1, ordersDAO.list().size());
+		Assert.assertEquals("Get All Order Test Case", 1, orderDAO.list().size());
 	}*/
 	
 	

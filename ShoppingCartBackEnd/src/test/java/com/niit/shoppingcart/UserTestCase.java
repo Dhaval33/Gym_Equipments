@@ -39,7 +39,7 @@ public class UserTestCase {
    
    // test users
    
-  // @Test
+   @Test
     public void  createUserTestCase()
    {
    	
@@ -47,14 +47,14 @@ public class UserTestCase {
    	user.setName("Admin");
    	user.setPassword("Admin@333");
    	user.setContact("+91 9833637845");
-   	user.setAddress("India");
+   	
    	
    	// ROLE IS FOR SETTING USER(SYS_USER) OR ADMIN(SYS_ADMIN)
    	
    	user.setRole("SYS_ADMIN");
-   	user.setBilling_address("Mumbai");
    	
-   	boolean status= userDAO.save(user);
+   	
+   	boolean status= userDAO.saveOrUpdate(user);
    	
    	Assert.assertEquals("Create user test case", true, status);
    	
@@ -69,7 +69,7 @@ public class UserTestCase {
 
 	
 
-	//@Test
+	/*@Test
 	public   void updateUserTestCase()
 	{
 		

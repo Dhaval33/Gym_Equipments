@@ -1,35 +1,20 @@
 package com.niit.shoppingcart.model;
 
-
-
-
-
-
-
-
-
-
-
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-
 
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 
 @Entity
 @Table(name= "category")
 @Component
-
 public class Category {
 	
 	@Id
@@ -40,8 +25,9 @@ public class Category {
 	
 	private String description;
 	
-	@OneToMany(mappedBy="category", fetch= FetchType.EAGER)
-	public Set<Product> products;
+	
+	@OneToMany(mappedBy="category", cascade=CascadeType.ALL, fetch= FetchType.EAGER)
+	private Set<Product> products;
 	
 	
 	

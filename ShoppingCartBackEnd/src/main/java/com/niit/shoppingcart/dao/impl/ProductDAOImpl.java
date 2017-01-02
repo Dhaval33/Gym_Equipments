@@ -45,7 +45,14 @@ public class ProductDAOImpl implements ProductDAO {
 	public boolean saveOrUpdate(Product product){
 	try
 	{
+		System.out.println(product.getId());
+		System.out.println(product.getName());
+		System.out.println(product.getPrice());
+		System.out.println(product.getCategory_id());
+		System.out.println(product.getSupplier_id());
+		
 		sessionFactory.getCurrentSession().saveOrUpdate(product);
+	
 		return true;
 	}
 	catch (HibernateException e)

@@ -1,19 +1,15 @@
 package com.niit.shoppingcart.model;
 
-import java.util.Set;
+import java.io.Serializable;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -22,8 +18,11 @@ import org.springframework.web.multipart.MultipartFile;
 @Table(name= "product")
 @Component
 
-public class Product {
+public class Product implements Serializable {
 	
+	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private String id;
 	
@@ -36,13 +35,15 @@ public class Product {
 	
 	private String supplier_id;
 	
-	@ManyToOne
-	@JoinColumn(name="category_id" , updatable= false, insertable= false, nullable= false)
-	public Category category;
 	
 	@ManyToOne
-	@JoinColumn(name="supplier_id", updatable= false, insertable= false, nullable= false)
-	public Supplier supplier;
+	@JoinColumn(name="CATEGORY_ID",nullable=false, updatable=false,insertable=false)
+	private Category category;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="SUPPLIER_ID",nullable=false, updatable=false,insertable=false)
+	private Supplier supplier;
 	
 	@Transient
 	private MultipartFile image;

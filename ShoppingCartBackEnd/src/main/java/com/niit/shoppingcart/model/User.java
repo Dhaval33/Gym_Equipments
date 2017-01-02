@@ -1,23 +1,23 @@
 package com.niit.shoppingcart.model;
 
-import javax.persistence.Column;
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 
 @Entity
 @Table(name= "user")
 @Component
-public class User {
+public class User implements Serializable{
 	
+	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private String id;
 	

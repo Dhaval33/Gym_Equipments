@@ -40,7 +40,7 @@ public class ProductTestCase {
     
     // test products
     
-   // @Test
+   @Test
      public void  createProductTestCase()
     {
     	

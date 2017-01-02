@@ -43,7 +43,7 @@ public class CategoryTestCase {
 		//We need to write test cases for each method defined in DAO
 	
 	
-		//@Test
+		@Test
 		
 		public   void createCategoryTestCase()
 		{

@@ -43,7 +43,7 @@ public class SupplierTestCase {
 		//We need to write test cases for each method defined in DAO
 	
 	
-		//@Test
+		@Test
 		
 		public   void createSupplierTestCase()
 		{
@@ -53,7 +53,7 @@ public class SupplierTestCase {
 				supplier.setName("Omegc Suppliers");
 			
 			
-			boolean status= supplierDAO.save(supplier);
+			boolean status= supplierDAO.saveOrUpdate(supplier);
 			
 			Assert.assertEquals("Create Supplier Test Case", true, status);
 			
@@ -65,28 +65,13 @@ public class SupplierTestCase {
 		{
 			supplier.setId("SUP-04");
 			
-			boolean status= supplierDAO.delete(supplier);
+			boolean status= supplierDAO.delete("abc");
 			Assert.assertEquals("Delete Supplier Test Case", true, status);
 		}
 	
 		
 
-		//@Test
-		public   void updateSupplierTestCase()
-		{
-			
-			
-			    supplier.setId("SUP-04");
-				supplier.setAddress("This is used to strengthen the upperbody Muscle");
-				
-			
-			
-			boolean status= supplierDAO.update(supplier);
-			
-			Assert.assertEquals("Update Supplier Test Case", true, status);
-			
-		
-		}
+	
 		
 		/*@Test
 		public   void getSupplierTestCase()

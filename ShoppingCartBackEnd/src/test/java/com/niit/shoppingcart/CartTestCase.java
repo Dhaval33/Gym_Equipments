@@ -39,20 +39,20 @@ public class CartTestCase {
    
    // test carts
    
-  // @Test
+  @Test
     public void  createCartTestCase()
    {
    	
-   	cart.setId("CAR-01");
-   	cart.setProduct_id("P0D-01");
-   	cart.setQuantity(1);
+   	cart.setId(10);
+   	cart.setProductName("P0D-01");
+   	cart.setUserID("Dhaval123");
    	cart.setPrice(90000);
    	
    	
    	
-   	boolean status= cartDAO.save(cart);
+   	 cartDAO.save(cart);
    	
-   	Assert.assertEquals("Create cart test case", true, status);
+   	Assert.assertEquals(cart, ("Create cart test case"));
    	
    	 }
 

@@ -12,15 +12,17 @@ public interface CartDAO {
 	
 	
 	
-	public List<Cart> list (String id);
+	//public List<Cart> list (String id);
 	
 	public void save(Cart cart);
 	
 	public void update(Cart cart);
 	
-	public String delete(String id);
+	public String delete(int id);
 	
-	public Long getTotalAmount(String id);
+	public Double getTotalAmount(String id);
+	
+	public List<Cart> getByUser(String UserId);
 
 	
 }

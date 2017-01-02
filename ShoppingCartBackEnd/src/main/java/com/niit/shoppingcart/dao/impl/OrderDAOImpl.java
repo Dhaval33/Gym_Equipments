@@ -1,5 +1,6 @@
 package com.niit.shoppingcart.dao.impl;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -13,8 +14,10 @@ import com.niit.shoppingcart.model.Order;
 
 
 @Repository("orderDAO")
-public class OrderDAOImpl implements OrderDAO {
+public class OrderDAOImpl implements OrderDAO, Serializable {
 
+	
+	private static final long serialVersionUID = 1L;
 	private SessionFactory sessionFactory;
 	
 	public OrderDAOImpl(SessionFactory sessionFactory)
@@ -24,13 +27,11 @@ public class OrderDAOImpl implements OrderDAO {
 		
 	}
 	
-	public OrderDAOImpl(){
-		
-	}
+	
 	
 	
 	public List<Order> list (String id){
-		String hql="from order where userID="+"'" +id + "'  and status= " + "'N'";
+		String hql="from order where userID="+"'" +id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<Order> list = (List<Order>) query.list();
 		
@@ -61,7 +62,7 @@ public class OrderDAOImpl implements OrderDAO {
 	@Transactional
 	public Order get(String id)
 	{
-		String hql="from order where userID="+"'" +id + "'  and status= " + "'N'";
+		String hql="from order where userID="+"'" +id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		@SuppressWarnings("unchecked")
@@ -76,8 +77,7 @@ public class OrderDAOImpl implements OrderDAO {
 	@Transactional
 	public Long getTotalAmount(String id)
 	{ Long sum = null;
-		String hql ="select sum(price) from Order where userID="+"'" + id +"'" +
-	                 " and status = " + "'N'";
+		String hql ="select sum(price) from Order where userID="+"'" + id +"'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		return sum;
 	

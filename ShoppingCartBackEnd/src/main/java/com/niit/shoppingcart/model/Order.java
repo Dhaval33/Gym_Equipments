@@ -1,10 +1,12 @@
 package com.niit.shoppingcart.model;
 
+
 import java.io.Serializable;
 import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
@@ -15,11 +17,12 @@ public class Order implements Serializable {
 
 private static final long serialVersionUID = 1L;
 	
-    @Column(name="UserID")
+   
+    @Column(name="USERID")
 	private String userID;
 	
     
-    @Column(name="orderID")
+    @Column(name="OrdersID")
 	private String orderID;
 	
    
@@ -30,11 +33,12 @@ private static final long serialVersionUID = 1L;
     @Column(name="BILLINGADDRESS")
 	private BillingAddress billingAddress;
 	
+    @Transient
     @Column(name="CART")
 	private Cart cart;
     
     @Column(name="TOTALAMOUNT")
-    private long totalAmount;
+    private float totalAmount;
 	
     @Column(name="PAYMENTMETHOD")
 	private String paymentMethod;
@@ -75,6 +79,7 @@ private static final long serialVersionUID = 1L;
 		this.billingAddress = billingAddress;
 	}
 
+	
 	public Cart getCart() {
 		return cart;
 	}
@@ -83,11 +88,12 @@ private static final long serialVersionUID = 1L;
 		this.cart = cart;
 	}
 
-	public long getTotalAmount() {
+	
+	public float getTotalAmount() {
 		return totalAmount;
 	}
 
-	public void setTotalAmount(long totalAmount) {
+	public void setTotalAmount(float totalAmount) {
 		this.totalAmount = totalAmount;
 	}
 

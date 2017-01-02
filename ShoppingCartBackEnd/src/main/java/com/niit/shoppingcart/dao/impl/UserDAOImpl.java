@@ -10,9 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import com.niit.shoppingcart.dao.UserDAO;
-import com.niit.shoppingcart.model.User;
 import com.niit.shoppingcart.model.User;
 
 

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class PaymentMethod implements Serializable{
 	
+	
+	private static final long serialVersionUID = 1L;
 	private String paymentMethod;
 
 	public String getPaymentMethod() {
